@@ -3,16 +3,23 @@ package com.example.demo.service;
 import com.example.demo.model.Post;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class PostService {
+    private List<Post> posts = new ArrayList<Post>(Arrays.asList(
+                    new Post("The tiger silently stalked its prey.", new Date()),
+                    new Post("The dolphin gracefully leaped through the waves.", new Date()),
+                    new Post("The owl hooted softly in the night.", new Date()))
+    );
+
+    public void create(String text) {
+        posts.add(new Post(text, new Date()));
+    }
     public List<Post> listAllPosts() {
-        return List.of(
-                new Post("The majestic lion roams freely across the African savannah, exuding strength and elegance.", new Date()),
-                new Post("The playful dolphins leap and spin in the crystal-clear waters, delighting onlookers with their acrobatics.", new Date()),
-                new Post("The agile cheetah, known as the fastest land animal, gracefully hunts its prey on the vast plains.", new Date())
-        );
+        return posts;
     }
 }
