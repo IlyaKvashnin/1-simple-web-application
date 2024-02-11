@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PostsCreateController {
     @Autowired
     PostService postsService;
+
     @RequestMapping(path = "/new", method = RequestMethod.GET)
     public String create(Model model) {
         model.addAttribute("appName", "Мое супер приложение");
